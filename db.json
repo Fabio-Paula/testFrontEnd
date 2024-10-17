@@ -1,1 +1,13 @@
-{}
+{
+  "get-login": [
+    {
+      "id": "b7cb",
+      "username": "testuser",
+      "password": "123"
+    }
+  ],
+  "get-chart": {
+    "values": [350, 50],
+    "labels": ["Contribuição mensal", "Contribuição voluntaria"]
+  }
+}
