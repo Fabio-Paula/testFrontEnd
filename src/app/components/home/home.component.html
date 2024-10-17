@@ -1,7 +1,9 @@
+<app-navbar></app-navbar>
 <div class="container">
   <div class="title">
     <img src="assets/icons/leftArrow.svg" />
-    <p>MEU PLANO</p>
+    <p class="title-desktop">MEU PLANO</p>
+    <p class="title-mobile">CONTRIBUIÇÕES</p>
   </div>
   <div class="content">
     <aside class="sidebar">
@@ -15,56 +17,57 @@
           <div class="itemList">
             <img src="assets/icons/extract.svg" /> Ver Extrato
           </div>
-          <img src="assets/icons/rightArrow.svg" />
+          <img class="arrow-items" src="assets/icons/rightArrow.svg" />
         </div>
         <hr />
         <div class="itemList">
           <div class="itemList">
-            <img src="assets/icons/letter.svg" /> Contribuição Mensal
+            <img src="assets/icons/letter.svg" />
+            <p>Contribuição Mensal</p>
           </div>
-          <img src="assets/icons/rightArrow.svg" />
+          <img class="arrow-items" src="assets/icons/rightArrow.svg" />
         </div>
         <hr />
         <div class="itemList">
           <div class="itemList">
             <img src="assets/icons/bagMoney.svg" /> Contribuição Extra
           </div>
-          <img src="assets/icons/rightArrow.svg" />
+          <img class="arrow-items" src="assets/icons/rightArrow.svg" />
         </div>
         <hr />
         <div class="itemList">
           <div class="itemList">
             <img src="assets/icons/document.svg" /> Documentos
           </div>
-          <img src="assets/icons/rightArrow.svg" />
+          <img class="arrow-items" src="assets/icons/rightArrow.svg" />
         </div>
         <hr />
         <div class="itemList">
           <div class="itemList">
             <img src="assets/icons/grafic.svg" /> Regime de Tributação
           </div>
-          <img src="assets/icons/rightArrow.svg" />
+          <img class="arrow-items" src="assets/icons/rightArrow.svg" />
         </div>
         <hr />
         <div class="itemList">
           <div class="itemList">
             <img src="assets/icons/ballon.svg" /> Solicitar Benefício
           </div>
-          <img src="assets/icons/rightArrow.svg" />
+          <img class="arrow-items" src="assets/icons/rightArrow.svg" />
         </div>
         <hr />
         <div class="itemList">
           <div class="itemList">
             <img src="assets/icons/extractLess.svg" /> Extrato Regressivo
           </div>
-          <img src="assets/icons/rightArrow.svg" />
+          <img class="arrow-items" src="assets/icons/rightArrow.svg" />
         </div>
         <hr />
         <div class="itemList">
           <div class="itemList">
             <img src="assets/icons/info.svg" /> Informações
           </div>
-          <img src="assets/icons/rightArrow.svg" />
+          <img class="arrow-items" src="assets/icons/rightArrow.svg" />
         </div>
         <hr />
       </div>
@@ -75,19 +78,50 @@
         <b>R$999.999,999</b>
         <p-chart
           type="doughnut"
-          width="200"
+          width="240"
           [data]="data"
           [options]="options"
         />
       </div>
-      <div class="card">
-        <div class="card-title">
-          <img src="assets/icons/coins.svg" />
-          <p>Contribuição mensal</p>
+      <div class="cards">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">
+              <img src="assets/icons/coins.svg" />
+              <p>Contribuição mensal</p>
+            </div>
+            <img class="arrow-items" src="assets/icons/rightArrow.svg" />
+          </div>
+          <div class="card-body">
+            <div class="card-body-items">
+              <p>Valor da contribuição</p>
+              <b>R$500,00</b>
+            </div>
+            <div class="card-body-items">
+              <p>Porcentagem do salário</p>
+              <b>5%</b>
+            </div>
+            <button>ALTERAR CONTRIBUIÇÃO</button>
+          </div>
         </div>
-        <div class="card-body"></div>
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">
+              <img src="assets/icons/coins.svg" />
+              <p>Contribuição mensal</p>
+            </div>
+            <img class="arrow-items" src="assets/icons/rightArrow.svg" />
+          </div>
+          <div class="card-body">
+            <div class="card-body-items">
+              <p>Valor da contribuição</p>
+              <b>R$500,00</b>
+            </div>
+            <button>ALTERAR CONTRIBUIÇÃO</button>
+          </div>
+        </div>
       </div>
+      <button class="button-new-contribution">INCLUIR CONTRIBUIÇÃO</button>
     </section>
-    <div></div>
   </div>
 </div>
