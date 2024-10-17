@@ -1,0 +1,60 @@
+<div class="container">
+  <section class="login">
+    <form (ngSubmit)="sendDataLogin()" class="container-login">
+      <img width="124" height="30" src="assets/Logo Navega.svg" />
+      <div class="titles">
+        <p>Boas-vindas ao Portal!</p>
+        <p>Para começar, qual seu email ou CPF?</p>
+      </div>
+      <p class="description">
+        Precisamos desta confirmação para dar inicio ao seu acesso
+      </p>
+      <div class="form">
+        <div>
+          <label>Email ou CPF</label>
+          <div class="input-icon">
+            <input
+              [(ngModel)]="username"
+              name="password"
+              placeholder="Email ou CPF"
+              pInputText
+            />
+            <img src="assets/icons/verified.svg" />
+          </div>
+        </div>
+        <div>
+          <label>Senha</label>
+          <div class="input-icon">
+            <input
+              [(ngModel)]="password"
+              name="password"
+              placeholder="Senha"
+              pInputText
+              [type]="revealPassword ? 'text' : 'password'"
+            />
+
+            <img
+              (click)="handleRevealPassword()"
+              class="reveal-password"
+              [src]="
+                revealPassword
+                  ? 'assets/icons/close-eye.svg'
+                  : 'assets/icons/eye.svg'
+              "
+            />
+          </div>
+        </div>
+      </div>
+      <button type="submit">ACESSAR</button>
+
+      <div class="forgot-password">
+        <p>Esqueceu a senha?</p>
+        <a>Acesse aqui</a>
+      </div>
+    </form>
+  </section>
+  <div class="figure-login">
+    <img src="assets/imageLogin.png" />
+    <p>Bem-vindo a seu novo Dashboard</p>
+  </div>
+</div>

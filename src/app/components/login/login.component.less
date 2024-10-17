@@ -1,0 +1,147 @@
+.container {
+  display: flex;
+  height: 100vh;
+  user-select: none;
+}
+.login {
+  width: 530px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  @media only screen and (max-width: 1024px) {
+    width: 100vw;
+  }
+  button {
+    background-color: #1aaab2;
+    width: 272px;
+    height: 40px;
+    padding: 0 16px 0 16px;
+    border-width: 0;
+    font-size: 14px;
+    font-weight: 700;
+    color: white;
+    border-radius: 4px;
+    margin-top: 133px;
+    cursor: pointer;
+  }
+
+  .input-icon {
+    display: flex;
+    position: relative;
+    img {
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      right: 10px;
+      top: 12px;
+      filter: brightness(0) saturate(100%) invert(57%) sepia(7%) saturate(228%)
+        hue-rotate(180deg) brightness(40%);
+    }
+  }
+
+  .reveal-password {
+    cursor: pointer;
+  }
+
+  .forgot-password {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 400;
+    gap: 4px;
+    a {
+      color: #1aaab2;
+      cursor: pointer;
+    }
+  }
+}
+
+.container-login {
+  width: 360px;
+  display: flex;
+  color: #464646;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.p-inputtext:enabled:focus {
+  box-shadow: none !important;
+}
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px white inset !important; /* ou a cor desejada */
+  box-shadow: 0 0 0 30px white inset !important; /* ou a cor desejada */
+  -webkit-text-fill-color: black; /* Cor do texto */
+}
+input:-webkit-autofill:enabled:focus {
+  -webkit-box-shadow: 0 0 0 30px white inset !important; /* ou a cor desejada */
+  box-shadow: 0 0 0 30px white inset !important; /* ou a cor desejada */
+  -webkit-text-fill-color: black; /* Cor do texto */
+}
+
+.form {
+  width: 100%;
+  text-align: left;
+  margin-top: 32px;
+
+  input {
+    width: 100%;
+    border-width: 0px;
+    border-radius: 0px;
+    border-bottom: 1px;
+    border-style: solid;
+    margin-bottom: 8px;
+    outline: none;
+    padding-right: 40px;
+  }
+
+  input:active {
+    background-color: transparent !important;
+    border: none;
+    outline: none;
+  }
+
+  label {
+    font-size: 12px;
+    font-weight: 400;
+  }
+}
+
+.figure-login {
+  display: flex;
+  flex: auto;
+  flex-direction: column;
+  align-items: center;
+  background-size: cover;
+  background-image: url("/assets/background.png");
+  img {
+    margin-top: 64px;
+  }
+  @media only screen and (max-width: 1024px) {
+    display: none;
+  }
+  p {
+    font-size: 16px;
+    font-weight: 700;
+    color: white;
+  }
+}
+
+.titles {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 76px;
+  p {
+    margin: 0;
+  }
+}
+
+.description {
+  width: 312px;
+  font-weight: 400;
+  font-size: 14px;
+}
