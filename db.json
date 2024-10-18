@@ -7,7 +7,7 @@
     }
   ],
   "get-chart": {
-    "values": [350, 50],
+    "values": [999, 999],
     "labels": ["Contribuição mensal", "Contribuição voluntaria"]
   }
 }
