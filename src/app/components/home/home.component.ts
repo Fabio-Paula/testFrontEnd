@@ -1,19 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import axios from 'axios';
-import { LogarithmicScale } from 'chart.js';
+import { Chart } from 'chart.js';
 
 interface chartsProps {
-  values: String[];
-  labels: String[];
+  values: string[];
+  labels: string[];
 }
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.less'],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewInit {
   data: any;
   options: any;
+
+  constructor() {}
 
   async ngOnInit() {
     const documentStyle = getComputedStyle(document.documentElement);
@@ -21,17 +23,22 @@ export class HomeComponent implements OnInit {
     const response = await axios.get('http://localhost:3000/get-chart');
     const valuesCharts: chartsProps = response.data;
 
+    const purple700 = documentStyle.getPropertyValue('--purple-700') || '#800080'; 
+    const pink500 = documentStyle.getPropertyValue('--pink-500') || '#ff69b4'; 
+    const purple600 = documentStyle.getPropertyValue('--purple-600') || '#800080'; 
+    const pink400 = documentStyle.getPropertyValue('--pink-400') || '#ff69b4'; 
+
     this.data = {
       datasets: [
         {
           data: valuesCharts.values,
           backgroundColor: [
-            documentStyle.getPropertyValue('--purple-700'),
-            documentStyle.getPropertyValue('--pink-500'),
+            purple700,
+            pink500,
           ],
           hoverBackgroundColor: [
-            documentStyle.getPropertyValue('--purple-600'),
-            documentStyle.getPropertyValue('--pink-400'),
+            purple600,
+            pink400,
           ],
         },
       ],
@@ -42,9 +49,9 @@ export class HomeComponent implements OnInit {
       cutout: '70%',
       plugins: {
         legend: {
-          position: 'bottom',
+          display: true, // Habilita a legenda
+          position: 'bottom', // Posiciona a legenda abaixo do gráfico
           align: 'center',
-          maxWidth: 200,
           labels: {
             font: {
               family: 'Poppins',
@@ -54,9 +61,39 @@ export class HomeComponent implements OnInit {
             usePointStyle: true,
             boxWidth: 20,
             padding: 15,
+            generateLabels: (chart : Chart) => {
+              const datasets = chart.data.datasets;
+              const labels = chart.data.labels as string[] || [];
+              return labels.map((label: string, i: number) => {
+                const value = datasets[0].data[i];
+                return {
+                  text: `${label}: R$${value}`, // Formato da legenda com valor ao lado
+                  value: `RS${value}`,
+                  fillStyle: Array.isArray(datasets[0].backgroundColor) ? datasets[0].backgroundColor[i] as string : '#000',
+                  strokeStyle: Array.isArray(datasets[0].hoverBackgroundColor) ? datasets[0].hoverBackgroundColor[i] as string : '#000',
+                  hidden: isNaN(datasets[0].data[i] as number),
+                  index: i
+                };
+              });
+            }
           },
+        },
+        datalabels: {
+          display: false,
         },
       },
     };
+  }
+
+  ngAfterViewInit() {
+    const canvas = document.getElementById('myChart') as HTMLCanvasElement; 
+    const ctx = canvas?.getContext('2d');
+    if (ctx) {
+      new Chart(ctx, {
+        type: 'doughnut',
+        data: this.data,
+        options: this.options,
+      });
+    }
   }
 }
