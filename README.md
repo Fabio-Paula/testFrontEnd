@@ -1,3 +1,8 @@
+## dados login
+
+usuario: testuser
+senha: 123
+
 ## rodando o projeto
 
 rode o comando `npm start` para iniciar o projeto
