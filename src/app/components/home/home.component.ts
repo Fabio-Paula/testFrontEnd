@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import axios from 'axios';
-import { Chart } from 'chart.js';
+import 'chartjs-plugin-datalabels';
+import { Chart, ChartData, ChartOptions } from 'chart.js';
 
 interface chartsProps {
   values: string[];
@@ -12,8 +13,8 @@ interface chartsProps {
   styleUrls: ['./home.component.less'],
 })
 export class HomeComponent implements OnInit, AfterViewInit {
-  data: any;
-  options: any;
+  data : ChartData<'doughnut'> = { datasets: [], labels: []};
+  options = {};
 
   constructor() {}
 
@@ -27,11 +28,11 @@ export class HomeComponent implements OnInit, AfterViewInit {
     const pink500 = documentStyle.getPropertyValue('--pink-500') || '#ff69b4'; 
     const purple600 = documentStyle.getPropertyValue('--purple-600') || '#800080'; 
     const pink400 = documentStyle.getPropertyValue('--pink-400') || '#ff69b4'; 
-
+    const values = valuesCharts.values.map(value => parseFloat(value))
     this.data = {
       datasets: [
         {
-          data: valuesCharts.values,
+          data: values,
           backgroundColor: [
             purple700,
             pink500,
@@ -49,8 +50,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
       cutout: '70%',
       plugins: {
         legend: {
-          display: true, // Habilita a legenda
-          position: 'bottom', // Posiciona a legenda abaixo do gráfico
+          display: true,
+          position: 'bottom',
           align: 'center',
           labels: {
             font: {
@@ -67,7 +68,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
               return labels.map((label: string, i: number) => {
                 const value = datasets[0].data[i];
                 return {
-                  text: `${label}: R$${value}`, // Formato da legenda com valor ao lado
+                  text: `${label}: R$${value}`,
                   value: `RS${value}`,
                   fillStyle: Array.isArray(datasets[0].backgroundColor) ? datasets[0].backgroundColor[i] as string : '#000',
                   strokeStyle: Array.isArray(datasets[0].hoverBackgroundColor) ? datasets[0].hoverBackgroundColor[i] as string : '#000',
@@ -82,7 +83,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
           display: false,
         },
       },
-    };
+    }
   }
 
   ngAfterViewInit() {
